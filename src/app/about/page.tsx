@@ -2,6 +2,6 @@
 
 export default function Page() {
   return (
-    <h1 className="text-2xl">Main Page</h1>
+    <h1 className="text-2xl">Vincent Wilkie</h1>
   );
 }
