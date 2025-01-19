@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { LinkedinIcon, LinkedinShareButton } from "next-share";
+import { LinkedinIcon } from "next-share";
 import Link from "next/link";
 
 export default function Page() {
@@ -13,7 +13,7 @@ export default function Page() {
         alt="VW Logo"
         priority
       />
-      <h1 className="text-2xl mb-4">Welcome!</h1>
+      <h1 className="text-2xl mb-4">Links:</h1>
       <Link href="https://www.linkedin.com/in/vdubworkshop/" target="_blank" className="pushable">
         <span className="pushable-shadow"></span>
         <span className="edge"></span>
