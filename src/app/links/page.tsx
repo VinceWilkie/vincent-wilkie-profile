@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div className="container mx-auto flex flex-col items-center justify-center">
       <Image
-        src="/logo.png"
+        src="/VW.png"
         width={300}
         height={300}
         alt="VW Logo"
