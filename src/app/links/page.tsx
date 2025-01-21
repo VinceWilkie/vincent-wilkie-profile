@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "../../components/Link";
-import { SocialIcon } from "react-social-icons";
+import { FacebookIcon, LinkedinIcon } from "next-share";
 
 export default function Page() {
   return (
@@ -23,11 +23,11 @@ export default function Page() {
         Email
       </Link>
       <Link href="https://www.linkedin.com/in/vdubworkshop/" classes="mb-4 linkedin">
-        <SocialIcon network="linkedin" style={{height: "24px", width: "24px"}} />
+        <LinkedinIcon size={24} />
         LinkedIn
       </Link>
       <Link href="https://www.facebook.com/vincewilkie1" classes="facebook">
-        <SocialIcon network="facebook" style={{height: "24px", width: "24px"}} />
+        <FacebookIcon size={24} />
         Facebook
       </Link>
     </div>
