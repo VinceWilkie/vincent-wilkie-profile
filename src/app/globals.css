@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
+  --button-bg-color: hsl(0, 0%, 87%);
+  --button-txt-color: black;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +24,15 @@ body {
 }
 
 .link {
-  width: 200px;
+  width: 150px;
+}
+
+.linkedin {
+  --button-bg-color: hsl(197, 100%, 31%);
+  --button-txt-color: white;
+}
+
+.facebook {
+  --button-bg-color: hsl(221, 44%, 37%);
+  --button-txt-color: white;
 }
