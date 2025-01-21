@@ -28,11 +28,11 @@ body {
 }
 
 .linkedin {
-  --button-bg-color: hsl(197, 100%, 31%);
+  --button-bg-color: hsl(197, 100%, 35%);
   --button-txt-color: white;
 }
 
 .facebook {
-  --button-bg-color: hsl(221, 44%, 37%);
+  --button-bg-color: hsl(221, 44%, 41%);
   --button-txt-color: white;
 }
