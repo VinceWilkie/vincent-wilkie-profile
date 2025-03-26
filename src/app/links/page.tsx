@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
-import VWLink from "../../components/VWLink";
+import VWLink from "@/components/VWLink";
 import { FacebookIcon, LinkedinIcon } from "next-share";
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Page() {
@@ -51,7 +51,7 @@ export default function Page() {
           <VWLink href="./projects" classes="w-full invisible anim anim-f" target="_self">
             <div className="flex justify-between w-full">
               <div className="flex items-center gap-2">
-                <svg className="fill-black-500" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640H447l-80-80H160v480l96-320h684L837-217q-8 26-29.5 41.5T760-160H160Zm84-80h516l72-240H316l-72 240Zm0 0 72-240-72 240Zm-84-400v-80 80Z"/></svg>
+                <span className="material-symbols-outlined">folder_open</span>
                 <span>Projects</span>
               </div>
               <span>&rarr;</span>
