@@ -24,9 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz@20&icon_names=mail,phone" rel="stylesheet" />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         <div className="footer absolute bottom-0 left-0 right-0 text-center p-4">
