@@ -7,10 +7,10 @@ export default function VWLink({
   classes,
   target
 }: Readonly<{
-  children: React.ReactNode,
-  href: string,
-  classes?: string,
-  target?: string
+  children: React.ReactNode;
+  href: string;
+  classes?: string;
+  target?: string;
 }>) {
   return (
     <Link href={href} target={target ? target : `_blank`} className={`pushable link${classes ? ` `+classes : ``}`}>
