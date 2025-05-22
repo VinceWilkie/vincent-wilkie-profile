@@ -9,7 +9,7 @@ export default function Project({
   project: ProjectModel
 }>) {
   return (
-    <div className={`project-list-item p-4 shadow rounded-xl border flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 bg-gray-100`}>
+    <div className="project-list-item p-4 flex flex-col items-center md:flex-row md:items-start text-center md:text-left gap-4">
       <Image
         className="visible rounded-xl"
         src={project.image.src}
