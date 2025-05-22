@@ -54,8 +54,8 @@ export default function DashboardLayout({
         <div className="breadcrumbs flex items-center grow">
           {
             pathNames.map((link, index) => {
-              let href = `/${pathNames.slice(0, index + 1).join(`/`)}`;
-              let itemLink = navLinks.find(({ href }) => href.includes(link))?.title;
+              const href = `/${pathNames.slice(0, index + 1).join(`/`)}`;
+              const itemLink = navLinks.find(({ href }) => href.includes(link))?.title;
 
               return (
                 <Fragment key={index}>
