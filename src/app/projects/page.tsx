@@ -59,7 +59,7 @@ export default function Page() {
         <h1 className="text-5xl">Projects</h1>
         <span className="material-symbols absolute bottom-[10px] text-6xl bounce2 cursor-pointer" onClick={() => scrollToElement(0)}>keyboard_double_arrow_down</span>
       </div>
-      {projects.map(({ ref, title, url, classes, image, backgroundColor }, index) => {
+      {projects.map(({ ref, title, url, classes, image }, index) => {
         return (
           <div className={`projects-slide relative h-screen w-screen flex flex-col items-center justify-center${classes ? ` `+classes : ``}`} ref={ref} key={index}>
             <div className="relative flex w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] h-[60vw] md:h-[50vh]">
