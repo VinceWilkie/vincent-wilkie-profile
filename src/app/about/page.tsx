@@ -7,7 +7,7 @@ export default function Page() {
       <div className="flex flex-col items-center max-w-[75vw] md:max-w-[50vw] lg:max-w-[40vw] xl:max-w-[30vw] h-full">
         <Image
           className="hover:opacity-50 cursor-pointer"
-          src="/VW.png"
+          src="/logo.png"
           width={50}
           height={50}
           alt="VW Logo"

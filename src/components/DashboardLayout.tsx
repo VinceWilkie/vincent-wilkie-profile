@@ -44,7 +44,7 @@ export default function DashboardLayout({
       <div className="navbar h-[50px] flex gap-2 border-b border-black box-content">
         <div className="logo-wrapper h-[50px] min-h-[50px] w-[50px] min-w-[50px] flex items-center justify-center box-content border-r border-black">
           <Image
-            src="/VW.png"
+            src="/logo.png"
             width={40}
             height={40}
             alt="VW Logo"

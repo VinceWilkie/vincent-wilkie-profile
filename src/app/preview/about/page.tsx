@@ -41,16 +41,11 @@ export default function AboutPreviewPage() {
             </div>
 
             <p className="text-lg sm:text-xl leading-7 sm:leading-8 text-gray-700">
-              I'm a passionate full stack software developer who loves building&nbsp;
-              <span className="font-semibold text-gray-900">delightful web experiences</span>&nbsp;
-              from the ground up. Whether it's crafting pixel-perfect frontends,
-              architecting robust backends, or exploring innovative solutions.
+              I'm a passionate full stack software developer who loves building <span className="font-semibold text-gray-900">delightful web experiences</span> from the ground up. Whether it's crafting pixel-perfect frontends, architecting robust backends, or exploring innovative solutions.
             </p>
 
             <p className="text-lg sm:text-xl leading-7 sm:leading-8 text-gray-700">
-              My approach centers on&nbsp;<span className="font-semibold text-gray-900">pragmatic solutions</span>,
-              clean user experiences, and steady iteration. I believe great software
-              comes from understanding both the technical challenges and the human needs behind every project.
+              My approach centers on <span className="font-semibold text-gray-900">pragmatic solutions</span>, clean user experiences, and steady iteration. I believe great software comes from understanding both the technical challenges and the human needs behind every project.
             </p>
           </FadeIn>
 

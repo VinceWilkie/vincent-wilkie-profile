@@ -47,7 +47,7 @@ export default function Page() {
         <div className="relative flex w-[60vw] h-[50vw] md:w-[50vw] md:h-[40vh] lg:w-[40vw] lg:h-[30vh]">
           <Image
             className="cursor-pointer hover:opacity-75"
-            src="/VW.png"
+            src="/logo.png"
             alt="Vincent Wilkie"
             fill
             style={{ objectFit: 'contain' }}

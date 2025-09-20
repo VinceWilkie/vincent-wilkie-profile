@@ -21,7 +21,7 @@ export default function Page() {
       <div className="landing flex-auto flex flex-col justify-center" style={{"width":"300px","maxWidth":"300px"}}>
         <Image
           className="invisible anim anim-a mb-8"
-          src="/VW.png"
+          src="/logo.png"
           width={300}
           height={300}
           alt="VW Logo"
