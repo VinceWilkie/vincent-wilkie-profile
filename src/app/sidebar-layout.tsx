@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Created by Vincent Wilkie",
 };
 
-export default function RootLayout({
+export default function SidebarLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

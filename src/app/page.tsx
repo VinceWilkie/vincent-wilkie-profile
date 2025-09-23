@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function PreviewIndexPage() {
+export default function RootIndexPage() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Preview</h1>
