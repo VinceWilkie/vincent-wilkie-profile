@@ -31,7 +31,7 @@ export default function RootLayout({
           <Navigation />
 
           {/* Main Content */}
-          <main className="w-full min-h-screen flex items-center justify-center md:min-h-[calc(100vh-80px)] px-10">
+          <main className="mx-auto w-full max-w-6xl min-h-screen flex items-center justify-center px-10" style={{ minHeight: 'calc(100vh - var(--header-height, 80px))' }}>
             {children}
           </main>
         </div>

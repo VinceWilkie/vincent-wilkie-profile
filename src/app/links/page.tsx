@@ -87,19 +87,19 @@ const links = [
 
 export default function LinksPage() {
   return (
-    <section className="flex flex-col items-center justify-center flex-1">
+    <section className="flex flex-col items-center justify-center flex-1 space-y-8">
       <FadeIn className="flex justify-center">
         <Image
           src="/logo.png"
           alt="Vincent Wilkie logo"
-          width={320}
-          height={320}
-          className="w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 object-contain"
+          width={500}
+          height={300}
+          className="w-40 h-24 sm:w-52 sm:h-32 md:w-72 md:h-44 object-contain"
           priority
         />
       </FadeIn>
 
-      <FadeIn className="space-y-2 text-center mb-8" delayMs={75}>
+      <FadeIn className="space-y-2 text-center" delayMs={75}>
         <h1 className="text-2xl font-semibold tracking-tight">Links</h1>
         <p className="text-sm text-gray-600">Let's connect! Explore my work, follow my journey, or reach out directly.</p>
       </FadeIn>

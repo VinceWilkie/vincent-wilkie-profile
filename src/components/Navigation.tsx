@@ -1,17 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navigation() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pathname, setPathname] = useState("");
   const currentPathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setPathname(currentPathname);
   }, [currentPathname]);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+      }
+    };
+
+    // Update on mount and when drawer state changes
+    updateHeaderHeight();
+
+    // Update on window resize
+    window.addEventListener('resize', updateHeaderHeight);
+
+    return () => window.removeEventListener('resize', updateHeaderHeight);
+  }, [isDrawerOpen]);
 
   const isActive = (path: string) => pathname === path;
 
@@ -103,11 +121,11 @@ export default function Navigation() {
       </div>
 
       {/* Desktop Header */}
-      <header className="hidden md:block border-b bg-white shadow-sm">
+      <header ref={headerRef} className="hidden md:block border-b bg-white shadow-sm">
         <nav className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 sm:gap-4">
             <h1 className="text-lg font-semibold text-gray-900">Vincent Wilkie</h1>
-            <span className="text-gray-400 text-sm">Full Stack Developer</span>
+            <span className="text-gray-400 text-sm">Full Stack Software Developer</span>
           </div>
           <div className="flex items-center gap-6 text-sm">
             <Link

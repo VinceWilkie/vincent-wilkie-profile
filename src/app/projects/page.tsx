@@ -32,7 +32,7 @@ const projects: Project[] = [
 
 export default function ProjectsPage() {
   return (
-    <section className="space-y-6 px-8">
+    <section className="space-y-6 px-8 py-10 md:py-4">
       <FadeIn className="space-y-2">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">Projects</h1>
         <p className="text-sm sm:text-base text-gray-600">Creative experiments and side projects I'm working on.</p>
