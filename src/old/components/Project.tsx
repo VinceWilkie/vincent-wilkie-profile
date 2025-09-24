@@ -1,5 +1,6 @@
 "use client";
-import VWLink from "@/components/VWLink";
+
+import VWLink from "@/old/components/VWLink";
 import ProjectModel from "@/models/Project";
 import Image from "next/image";
 

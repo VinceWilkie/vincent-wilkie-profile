@@ -1,89 +1,73 @@
-"use client";
 import Image from "next/image";
-import { useRef } from "react";
+import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
 
-export default function Page() {
-  const top = useRef<null | HTMLDivElement>(null);
-  const projects = [
-    {
-      ref: useRef<null | HTMLDivElement>(null),
-      title: ``,
-      image: `/projects/ctrlaltrandom.png`,
-      url: `https://ctrlaltrandom.com`,
-      classes: `bg-black text-white`,
-      backgroundColor: `rgba(255, 255, 255, 0.1)`
-    },
-    {
-      ref: useRef<null | HTMLDivElement>(null),
-      title: ``,
-      image: `/projects/liati.png`,
-      url: `https://liati.ca`,
-      classes: ``,
-      backgroundColor: `rgba(0, 0, 0, 0.1)`
-    },
-  ];
+type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  href?: string;
+  status?: string;
+};
 
-  const scrollToElement = (index: number) => {
-    const project = projects[index];
+const projects: Project[] = [
+  {
+    slug: "liati",
+    title: "LIATI",
+    description: "A digital narrative weaving personal journey with fashion brand storytelling.",
+    image: "/projects/liati.png",
+    href: "https://liati.ca",
+    status: "In Development",
+  },
+  {
+    slug: "ctrlaltrandom",
+    title: "CtrlAltRandom",
+    description: "The Ctrl Alt Random Podcast is a place where we dive into random tech topics—from groundbreaking innovations to quirky gadgets. Expect fun, candid chats and surprising discoveries in every episode. Tech has never been this unpredictable—Click here to join the randomness!",
+    image: "/projects/ctrlaltrandom.png",
+    href: "https://ctrlaltrandom.com",
+    status: "In Development",
+  },
+];
 
-    if (project && project.ref.current) {
-      project.ref.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (index === -1) {
-      scrollToTop();
-    }
-  };
-
-  const scrollToTop = () => {
-    top.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const navigateToUrl = (url: string, target: string = `_blank`) => {
-    window.open(url, target);
-  };
-
+export default function ProjectsPage() {
   return (
-    <div className="projects overflow-x-hidden" ref={top}>
-      <div className="projects-slide relative h-screen w-screen flex flex-col items-center justify-center">
-        <div className="relative flex w-[60vw] h-[50vw] md:w-[50vw] md:h-[40vh] lg:w-[40vw] lg:h-[30vh]">
-          <Image
-            className="cursor-pointer hover:opacity-75"
-            src="/VW.png"
-            alt="Vincent Wilkie"
-            fill
-            style={{ objectFit: 'contain' }}
-            sizes="50vw"
-            onClick={() => navigateToUrl(`/`, `_self`)}
-          />
-          {/* <div className="overlay absolute top-0 left-0 w-full h-full hover:opacity-100 opacity-0 rounded-xl cursor-pointer" style={{ transition: `opacity 0.3s ease`, backgroundColor: `rgba(0, 0, 0, 0.1)` }}></div> */}
-        </div>
-        <h1 className="text-5xl">Projects</h1>
-        <span className="material-symbols absolute bottom-[10px] text-6xl bounce2 cursor-pointer" onClick={() => scrollToElement(0)}>keyboard_double_arrow_down</span>
-      </div>
-      {projects.map(({ ref, title, url, classes, image }, index) => {
-        return (
-          <div className={`projects-slide relative h-screen w-screen flex flex-col items-center justify-center${classes ? ` `+classes : ``}`} ref={ref} key={index}>
-            <div className="relative flex w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] h-[60vw] md:h-[50vh]">
-              <Image
-                className="cursor-pointer hover:opacity-75"
-                src={image}
-                alt={title}
-                fill
-                style={{ objectFit: 'contain' }}
-                sizes="50vw"
-                onClick={() => navigateToUrl(url)}
-              />
-              {/* <div className="overlay absolute top-0 left-0 w-full h-full hover:opacity-100 opacity-0 rounded-xl cursor-pointer" style={{ transition: `opacity 0.3s ease`, backgroundColor }}></div> */}
-            </div>
-            {title && <h1 className="text-5xl">{title}</h1>}
-            {index - 1 > -2 && <span className="material-symbols absolute top-[10px] text-6xl bounce2 cursor-pointer" onClick={() => scrollToElement(index-1)}>keyboard_double_arrow_up</span>}
-            {index + 1 < projects.length && <span className="material-symbols absolute bottom-[10px] text-6xl bounce2 cursor-pointer" onClick={() => scrollToElement(index+1)}>keyboard_double_arrow_down</span>}
-            <span className="material-symbols absolute bottom-[50px] right-[50px] text-3xl cursor-pointer" onClick={scrollToTop}>arrow_upward</span>
-          </div>
-        );
-      })}
-      <div className="footer text-center">
-        &copy; Copyright {new Date().getFullYear()} - Vincent Wilkie
-      </div>
-    </div>
+    <section className="space-y-6 px-8 py-10 md:py-4">
+      <FadeIn className="space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">Projects</h1>
+        <p className="text-sm sm:text-base text-gray-600">Creative experiments and side projects I&apos;m working on.</p>
+      </FadeIn>
+      <ul className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2">
+        {projects.map((p, idx) => (
+          <li key={p.slug} className="rounded-lg border overflow-hidden bg-white">
+            <FadeIn delayMs={60 + idx * 100}>
+              <Link
+                href={p.href ?? "#"}
+                className="block group"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <div className="aspect-[16/10] sm:aspect-video relative bg-gray-100">
+                  <Image src={p.image} alt={p.title} fill className="object-contain" sizes="(max-width: 640px) 100vw, 50vw" />
+                </div>
+                <div className="p-4 sm:p-5 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-base sm:text-lg font-medium group-hover:underline">{p.title}</h2>
+                    {p.status && (
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        {p.status}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm sm:text-[0.95rem] text-gray-600">{p.description}</p>
+                </div>
+              </Link>
+            </FadeIn>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
+
+

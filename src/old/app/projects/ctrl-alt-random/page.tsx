@@ -1,5 +1,5 @@
 "use client";
-import VWLink from "@/components/VWLink";
+import VWLink from "@/old/components/VWLink";
 import Image from "next/image";
 
 export default function Page() {

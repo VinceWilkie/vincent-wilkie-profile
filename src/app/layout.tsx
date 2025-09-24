@@ -1,3 +1,4 @@
+import LayoutWrapper from "@/components/LayoutWrapper";
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "../styles/globals.css";
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased font-[family-name:var(--font-roboto-sans)]`}>
-        {children}
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );
