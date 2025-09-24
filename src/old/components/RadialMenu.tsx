@@ -102,7 +102,6 @@ const getThemeColor = (theme: string): string => {
 };
 
 export default function RadialMenu({ links }: RadialMenuProps) {
-  const [centerLabel, setCenterLabel] = useState("");
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -120,7 +119,7 @@ export default function RadialMenu({ links }: RadialMenuProps) {
   const typeText = (text: string, onComplete?: () => void) => {
     // Clear any existing typing animation
     if (typingTimeout) {
-      clearInterval(typingTimeout as any);
+      clearInterval(typingTimeout);
     }
 
     setIsTyping(true);
@@ -139,12 +138,12 @@ export default function RadialMenu({ links }: RadialMenuProps) {
     }, 80); // Adjust speed here (lower = faster)
 
     // Store the interval ID for cancellation
-    setTypingTimeout(typeInterval as any);
+    setTypingTimeout(typeInterval);
   };
 
   const cancelTyping = () => {
     if (typingTimeout) {
-      clearInterval(typingTimeout as any);
+      clearInterval(typingTimeout);
       setTypingTimeout(null);
     }
     setIsTyping(false);
@@ -152,7 +151,6 @@ export default function RadialMenu({ links }: RadialMenuProps) {
   };
 
   const handleMouseEnter = (label: string, index: number) => {
-    setCenterLabel(label);
     setHoveredIndex(index);
     typeText(label);
   };
@@ -160,7 +158,6 @@ export default function RadialMenu({ links }: RadialMenuProps) {
   const handleMouseLeave = () => {
     // Cancel typing animation and clear text immediately when leaving
     cancelTyping();
-    setCenterLabel("");
     setHoveredIndex(null);
   };
 

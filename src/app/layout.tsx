@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "../styles/globals.css";
@@ -27,14 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased font-[family-name:var(--font-roboto-sans)]`}>
-        <div className="min-h-dvh relative">
-          <Navigation />
-
-          {/* Main Content */}
-          <main className="mx-auto w-full max-w-6xl min-h-screen flex items-center justify-center px-10" style={{ minHeight: 'calc(100vh - var(--header-height, 80px))' }}>
-            {children}
-          </main>
-        </div>
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

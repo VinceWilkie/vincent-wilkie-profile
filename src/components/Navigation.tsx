@@ -2,34 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
-export default function Navigation() {
+const Navigation = forwardRef<HTMLElement>((props, ref) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pathname, setPathname] = useState("");
   const currentPathname = usePathname();
-  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setPathname(currentPathname);
   }, [currentPathname]);
-
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight;
-        document.documentElement.style.setProperty('--header-height', `${height}px`);
-      }
-    };
-
-    // Update on mount and when drawer state changes
-    updateHeaderHeight();
-
-    // Update on window resize
-    window.addEventListener('resize', updateHeaderHeight);
-
-    return () => window.removeEventListener('resize', updateHeaderHeight);
-  }, [isDrawerOpen]);
 
   const isActive = (path: string) => pathname === path;
 
@@ -120,8 +102,8 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Desktop Header */}
-      <header ref={headerRef} className="hidden md:block border-b bg-white shadow-sm">
+       {/* Desktop Header */}
+       <header ref={ref} className="hidden md:block border-b bg-white shadow-sm">
         <nav className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 sm:gap-4">
             <h1 className="text-lg font-semibold text-gray-900">Vincent Wilkie</h1>
@@ -157,10 +139,14 @@ export default function Navigation() {
               }`}
             >
               Projects
-            </Link>
-          </div>
-        </nav>
-      </header>
+        </Link>
+      </div>
+    </nav>
+  </header>
     </>
   );
-}
+});
+
+Navigation.displayName = "Navigation";
+
+export default Navigation;

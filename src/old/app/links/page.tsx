@@ -1,5 +1,5 @@
 "use client";
-import VWLink from "@/components/VWLink";
+import VWLink from "@/old/components/VWLink";
 import { FacebookIcon, LinkedinIcon } from "next-share";
 import Image from "next/image";
 import { useEffect } from "react";

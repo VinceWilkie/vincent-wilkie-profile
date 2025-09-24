@@ -101,13 +101,13 @@ export default function LinksPage() {
 
       <FadeIn className="space-y-2 text-center" delayMs={75}>
         <h1 className="text-2xl font-semibold tracking-tight">Links</h1>
-        <p className="text-sm text-gray-600">Let's connect! Explore my work, follow my journey, or reach out directly.</p>
+        <p className="text-sm text-gray-600">Let&apos;s connect! Explore my work, follow my journey, or reach out directly.</p>
       </FadeIn>
 
       {/* Links List */}
       <FadeIn className="w-full max-w-lg" delayMs={150}>
         <div className="space-y-0 flex flex-col items-center">
-          {links.map((link, index) => (
+          {links.map((link) => (
             <Link
               key={link.label}
               href={link.href}
