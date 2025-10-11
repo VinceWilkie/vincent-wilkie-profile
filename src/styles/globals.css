@@ -24,6 +24,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .filled {
@@ -61,4 +64,24 @@ body {
 
 .bounce2 {
   animation: bounce2 2s ease infinite;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Ensure touch targets are at least 44px */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Prevent horizontal scrolling */
+  * {
+    max-width: 100%;
+  }
 }
