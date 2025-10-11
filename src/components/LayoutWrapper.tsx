@@ -34,7 +34,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       <Navigation ref={headerRef} />
 
       {/* Main Content */}
-      <main className="mx-auto w-full max-w-6xl flex-1 flex items-center justify-center px-10" style={{ minHeight: 'calc(100vh - var(--header-height, 80px) - var(--footer-height, 60px))' }}>
+      <main className="mx-auto w-full max-w-6xl flex-1 flex items-center justify-center px-4 sm:px-6 md:px-10" style={{ minHeight: 'calc(100vh - var(--header-height, 80px) - var(--footer-height, 60px))' }}>
         {children}
       </main>
 
