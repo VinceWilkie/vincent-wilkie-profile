@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wilkie's Workshop",
+  title: "Vincent Wilkie",
   description: "Created by Vincent Wilkie",
 };
 
