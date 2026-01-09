@@ -16,33 +16,28 @@ const links = [
 const skills = [
     {
         name: `frontend`,
-        version: `5y+`,
-        description: `Crafting responsive, accessible UIs with React, Next.js, and modern CSS. Obsessed with smooth animations and pixel-perfect layouts.`
+        version: `14y+`,
+        description: `From early HTML/CSS/JS to modern frameworks like React, Vue, and Angular. Currently building with TypeScript, SCSS, and Ionic for hybrid mobile apps.`
     },
     {
         name: `backend`,
+        version: `14y+`,
+        description: `PHP (refactored legacy codebases to CodeIgniter), Node.js/Express, and Python. Building APIs and server-side logic that powers real applications.`
+    },
+    {
+        name: `databases`,
+        version: `14y+`,
+        description: `MySQL across multiple production systems—schema design, query optimization, and migrations. NoSQL experience for flexible data needs.`
+    },
+    {
+        name: `mobile`,
+        version: `6y+`,
+        description: `Objective-C for native iOS integration, Ionic/Cordova for cross-platform Android and iOS apps. Bridging web tech to mobile experiences.`
+    },
+    {
+        name: `devops_infra`,
         version: `5y+`,
-        description: `Building scalable APIs and services with Node.js, Python, and cloud infrastructure. Clean architecture that scales.`
-    },
-    {
-        name: `database`,
-        version: `4y+`,
-        description: `Designing efficient schemas, writing optimized queries, and managing both SQL and NoSQL databases in production.`
-    },
-    {
-        name: `devops`,
-        version: `3y+`,
-        description: `CI/CD pipelines, containerization with Docker, and cloud deployments. Automating everything that can be automated.`
-    },
-    {
-        name: `api_design`,
-        version: `5y+`,
-        description: `RESTful and GraphQL APIs that are intuitive, well-documented, and a pleasure to integrate with.`
-    },
-    {
-        name: `integration`,
-        version: `4y+`,
-        description: `Connecting disparate systems, third-party APIs, and legacy codebases into cohesive, working solutions.`
+        description: `AWS (EC2, Lambda, S3, RDS, CloudFormation, SQS, SNS), on-site server management, hardware systems, and keeping production environments running.`
     },
 ]
 
@@ -78,7 +73,7 @@ function TypeWriter({ text, delay = 0 }: { text: string; delay?: number }) {
                     clearInterval(interval)
                     setTimeout(() => setShowCursor(false), 1000)
                 }
-            }, 30)
+            }, 20)
             return () => clearInterval(interval)
         }, delay)
         return () => clearTimeout(timeout)
@@ -123,16 +118,146 @@ function SkillOutput({ text, skillKey }: { text: string; skillKey: string }) {
     )
 }
 
-export default function TerminalDesign() {
-    const [bootComplete, setBootComplete] = useState(false)
-    const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
+const bootLines = [
+    { text: `[BOOT] Initializing portfolio.exe...`, color: `text-[#00ff41]`, delay: 200 },
+    { text: `[OK] Loading 14 years of caffeine dependencies`, color: `text-[#00ff41]`, delay: 200 },
+    { text: `[OK] Mounting /dev/creativity`, color: `text-[#00ff41]`, delay: 150 },
+    { text: `[OK] Starting imposter-syndrome-suppressor.service`, color: `text-[#00ff41]`, delay: 200 },
+    { text: `[WARN] Found 47 unfinished side projects... ignoring`, color: `text-yellow-400`, delay: 300 },
+    { text: `[OK] Connecting to the internet tubes`, color: `text-[#00ff41]`, delay: 150 },
+    { text: `[OK] Compiling excuses for legacy code`, color: `text-[#00ff41]`, delay: 200 },
+    { text: `[OK] Loading pixel-perfect expectations`, color: `text-[#00ff41]`, delay: 150 },
+    { text: `[INFO] Stack overflow tabs: 42 (normal)`, color: `text-gray-400`, delay: 200 },
+    { text: `[OK] Deploying smooth animations`, color: `text-[#00ff41]`, delay: 150 },
+    { text: `[SUCCESS] Portfolio ready!`, color: `text-cyan-400`, delay: 500 },
+    { text: ``, color: `text-[#00ff41]`, delay: 300 },
+    { text: `Welcome to Vincent Wilkie's Portfolio`, color: `text-cyan-400`, delay: 100 },
+]
+
+const STORAGE_KEY = `vw-portfolio-boot-seen`
+
+function BootSequence({ onComplete }: { onComplete: () => void }) {
+    const [currentLine, setCurrentLine] = useState(0)
+    const [displayedLines, setDisplayedLines] = useState<string[]>([])
+    const [currentText, setCurrentText] = useState(``)
+    const [showCursor, setShowCursor] = useState(true)
+    const [waitingForInput, setWaitingForInput] = useState(false)
 
     useEffect(() => {
-        const timer = setTimeout(() => setBootComplete(true), 2000)
-        return () => clearTimeout(timer)
-    }, [])
+        if (currentLine >= bootLines.length) {
+            // All lines done, wait for user input
+            setShowCursor(false)
+            setWaitingForInput(true)
+            return
+        }
+
+        const line = bootLines[currentLine]
+        let charIndex = 0
+
+        const interval = setInterval(() => {
+            if (charIndex <= line.text.length) {
+                setCurrentText(line.text.slice(0, charIndex))
+                charIndex++
+            } else {
+                clearInterval(interval)
+                // Line complete, add to displayed lines and move to next
+                setDisplayedLines(prev => [...prev, line.text])
+                setCurrentText(``)
+                setTimeout(() => setCurrentLine(prev => prev + 1), line.delay || 150)
+            }
+        }, 10)
+
+        return () => clearInterval(interval)
+    }, [currentLine])
+
+    useEffect(() => {
+        if (!waitingForInput) return
+
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.key !== `Enter` && e.key !== ` `) return
+            e.preventDefault()
+            completeAndSave()
+        }
+
+        const handleClick = () => {
+            completeAndSave()
+        }
+
+        const completeAndSave = () => {
+            // Mark as seen in localStorage
+            try {
+                localStorage.setItem(STORAGE_KEY, `true`)
+            } catch {
+                // localStorage might not be available
+            }
+            onComplete()
+        }
+
+        // Use document instead of window for better keyboard capture
+        document.addEventListener(`keydown`, handleKeydown)
+        document.addEventListener(`click`, handleClick)
+        document.addEventListener(`touchstart`, handleClick)
+
+        return () => {
+            document.removeEventListener(`keydown`, handleKeydown)
+            document.removeEventListener(`click`, handleClick)
+            document.removeEventListener(`touchstart`, handleClick)
+        }
+    }, [waitingForInput, onComplete])
+
+    return (
+        <div className="space-y-1 text-sm">
+            {displayedLines.map((line, i) => (
+                <p key={i} className={bootLines[i]?.color || `text-[#00ff41]`}>
+                    {line || `\u00A0`}
+                </p>
+            ))}
+            {currentLine < bootLines.length && (
+                <p className={bootLines[currentLine]?.color || `text-[#00ff41]`}>
+                    {currentText}
+                    {showCursor && <span className="animate-pulse">█</span>}
+                </p>
+            )}
+            {waitingForInput && (
+                <p className="text-gray-400 mt-4 animate-pulse">
+                    Press Enter or Space, tap, or click to continue...
+                </p>
+            )}
+        </div>
+    )
+}
+
+export default function TerminalDesign() {
+    const [bootComplete, setBootComplete] = useState(false)
+    const [showBoot, setShowBoot] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
+    const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
 
     const activeSkill = skills.find(s => s.name === selectedSkill)
+
+    // Check localStorage on mount to determine if boot should be skipped
+    useEffect(() => {
+        try {
+            const hasSeenBoot = localStorage.getItem(STORAGE_KEY)
+            if (hasSeenBoot === `true`) {
+                setShowBoot(false)
+                setBootComplete(true)
+            }
+        } catch {
+            // localStorage might not be available
+        }
+        setIsLoading(false)
+    }, [])
+
+    const handleReboot = () => {
+        try {
+            localStorage.removeItem(STORAGE_KEY)
+        } catch {
+            // localStorage might not be available
+        }
+        setBootComplete(false)
+        setShowBoot(true)
+    }
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-[#00ff41] font-mono selection:bg-[#00ff41] selection:text-black overflow-x-hidden">
@@ -167,34 +292,50 @@ export default function TerminalDesign() {
             />
 
             {/* Terminal Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 border-b border-green-900/50 backdrop-blur-sm">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6">
-                    <div className="flex items-center h-10">
-                        <div className="flex gap-1.5">
-                            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            {bootComplete && (
+                <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 border-b border-green-900/50 backdrop-blur-sm">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6">
+                        <div className="flex items-center h-10">
+                            {/* <div className="flex gap-1.5">
+                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                            </div> */}
+                            <Image
+                                src="/VW_noborder.png"
+                                alt="VW Logo"
+                                width={32}
+                                height={32}
+                                className="object-contain h-6 w-auto py-0.5 mr-2"
+                                priority
+                            />
+                            <span className="text-sm opacity-60">vwilkie@portfolio:~$</span>
+                            <span className="ml-1 animate-pulse">█</span>
                         </div>
-                        <span className="ml-4 text-sm opacity-60">vwilkie@portfolio:~$</span>
-                        <span className="ml-1 animate-pulse">█</span>
                     </div>
-                </div>
-            </header>
+                </header>
+            )}
 
             {/* Main Terminal Content */}
-            <main className="pt-16 pb-16 px-4 sm:px-6 max-w-5xl mx-auto">
-                {/* Boot Sequence */}
-                {!bootComplete && (
-                    <div className="space-y-2 text-sm animate-pulse">
-                        <p>[BOOT] Initializing system...</p>
-                        <p>[OK] Loading kernel modules</p>
-                        <p>[OK] Starting portfolio daemon</p>
-                        <p className="text-cyan-400">[INFO] Welcome to Vincent Wilkie Portfolio v2.0</p>
+            <main className={`pb-16 px-4 sm:px-6 max-w-5xl mx-auto ${bootComplete ? `pt-16` : `pt-8`}`}>
+                {/* Loading state to prevent flash */}
+                {isLoading && (
+                    <div className="text-gray-500 text-sm">
+                        <span className="animate-pulse">█</span>
                     </div>
+                )}
+
+                {/* Boot Sequence */}
+                {!isLoading && showBoot && !bootComplete && (
+                    <BootSequence onComplete={() => setBootComplete(true)} />
                 )}
 
                 {bootComplete && (
                     <div className="space-y-6">
+                        {/* Connection Status */}
+                        {/* <div className="text-gray-600 text-sm">
+                            <span className="animate-pulse">█</span> Connection established | Type &apos;exit&apos; to disconnect
+                        </div> */}
                         {/* ASCII Art Header */}
                         {/* <section className="overflow-x-auto flex flex-col items-center">
                             <pre className="text-[8px] sm:text-xs leading-none text-green-500/80 whitespace-pre inline-block">
@@ -278,7 +419,7 @@ export default function TerminalDesign() {
                                                 }`}
                                         >
                                             <span className={`${selectedSkill === skill.name ? `text-green-400` : `text-green-600`}`}>
-                                                {selectedSkill === skill.name ? `▼` : `├──`}
+                                                {selectedSkill === skill.name ? `├── ▼` : `├──`}
                                             </span>
                                             <span className="text-cyan-400">{skill.name}</span>
                                             <span className="text-gray-600">@</span>
@@ -386,16 +527,13 @@ export default function TerminalDesign() {
                                 </p>
                                 <div className="flex items-center gap-4">
                                     <span className="text-gray-600">PID: {Math.floor(Math.random() * 9000) + 1000}</span>
-                                    <Link
-                                        href="/testing"
-                                        className="text-cyan-400 hover:text-white transition-colors"
+                                    <button
+                                        onClick={handleReboot}
+                                        className="text-yellow-500 hover:text-yellow-400 transition-colors"
                                     >
-                                        [exit]
-                                    </Link>
+                                        [reboot]
+                                    </button>
                                 </div>
-                            </div>
-                            <div className="mt-4 text-gray-600 text-sm">
-                                <span className="animate-pulse">█</span> Connection established | Type &apos;exit&apos; to disconnect
                             </div>
                         </footer>
                     </div>
