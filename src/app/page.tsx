@@ -227,7 +227,7 @@ function BootSequence({ onComplete }: { onComplete: () => void }) {
     )
 }
 
-export default function TerminalDesign() {
+export default function HomePage() {
     const [bootComplete, setBootComplete] = useState(false)
     const [showBoot, setShowBoot] = useState(true)
     const [isLoading, setIsLoading] = useState(true)
@@ -296,11 +296,6 @@ export default function TerminalDesign() {
                 <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 border-b border-green-900/50 backdrop-blur-sm">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6">
                         <div className="flex items-center h-10">
-                            {/* <div className="flex gap-1.5">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                            </div> */}
                             <Image
                                 src="/VW_noborder.png"
                                 alt="VW Logo"
@@ -332,30 +327,6 @@ export default function TerminalDesign() {
 
                 {bootComplete && (
                     <div className="space-y-6">
-                        {/* Connection Status */}
-                        {/* <div className="text-gray-600 text-sm">
-                            <span className="animate-pulse">█</span> Connection established | Type &apos;exit&apos; to disconnect
-                        </div> */}
-                        {/* ASCII Art Header */}
-                        {/* <section className="overflow-x-auto flex flex-col items-center">
-                            <pre className="text-[8px] sm:text-xs leading-none text-green-500/80 whitespace-pre inline-block">
-                                {`██╗   ██╗██╗███╗   ██╗ ██████╗███████╗███╗   ██╗████████╗
-██║   ██║██║████╗  ██║██╔════╝██╔════╝████╗  ██║╚══██╔══╝
-██║   ██║██║██╔██╗ ██║██║     █████╗  ██╔██╗ ██║   ██║
-╚██╗ ██╔╝██║██║╚██╗██║██║     ██╔══╝  ██║╚██╗██║   ██║
- ╚████╔╝ ██║██║ ╚████║╚██████╗███████╗██║ ╚████║   ██║
-  ╚═══╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   `}
-                            </pre>
-                            <pre className="text-[8px] sm:text-xs leading-none text-cyan-400/80 whitespace-pre inline-block mt-1">
-                                {`██╗    ██╗██╗██╗     ██╗  ██╗██╗███████╗
-██║    ██║██║██║     ██║ ██╔╝██║██╔════╝
-██║ █╗ ██║██║██║     █████╔╝ ██║█████╗
-██║███╗██║██║██║     ██╔═██╗ ██║██╔══╝
-╚███╔███╔╝██║███████╗██║  ██╗██║███████╗
- ╚══╝╚══╝ ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚══════╝`}
-                            </pre>
-                        </section> */}
-
                         {/* Profile Section */}
                         <section id="about" className="space-y-2">
                             <p className="text-gray-500">$ cat /etc/profile</p>
@@ -542,4 +513,3 @@ export default function TerminalDesign() {
         </div>
     )
 }
-
