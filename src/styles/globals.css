@@ -66,22 +66,48 @@ body {
   animation: bounce2 2s ease infinite;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-themed {
+  scrollbar-width: thin;
+}
+.scrollbar-themed[data-theme="dark"] {
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+.scrollbar-themed[data-theme="light"] {
+  scrollbar-color: rgba(0,0,0,0.15) transparent;
+}
+.scrollbar-themed::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-themed::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-themed[data-theme="dark"]::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+.scrollbar-themed[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
+}
+.scrollbar-themed[data-theme="light"]::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+.scrollbar-themed[data-theme="light"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.3);
+}
+
 /* Mobile-specific improvements */
 @media (max-width: 640px) {
-  /* Ensure touch targets are at least 44px */
-  button, a, input, select, textarea {
-    min-height: 44px;
-    min-width: 44px;
-  }
-
-  /* Improve text readability on mobile */
   body {
     font-size: 16px;
     line-height: 1.5;
-  }
-
-  /* Prevent horizontal scrolling */
-  * {
-    max-width: 100%;
   }
 }
