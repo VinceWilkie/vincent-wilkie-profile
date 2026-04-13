@@ -2,6 +2,12 @@ import Link from "next/link"
 
 const designs = [
     {
+        slug: `scroll-reveal`,
+        name: `Scroll Reveal`,
+        description: `Free-scroll layout with reversible fade/slide animations triggered by IntersectionObserver as sections enter the viewport.`,
+        colors: [`#030712`, `#4ade80`, `#f9fafb`],
+    },
+    {
         slug: `brutalist`,
         name: `Brutalist`,
         description: `Bold, high-contrast design with stark typography, geometric shapes, and raw visual impact.`,
@@ -24,6 +30,54 @@ const designs = [
         name: `Terminal`,
         description: `Retro hacker aesthetic with monospace fonts, phosphor glow, and nostalgic CRT vibes.`,
         colors: [`#0d0d0d`, `#00ff41`, `#003b00`],
+    },
+    {
+        slug: `ide`,
+        name: `IDE`,
+        description: `VS Code-inspired editor layout with tabs, file explorer sidebar, line numbers, and syntax-highlighted code content.`,
+        colors: [`#1e1e1e`, `#007acc`, `#d4d4d4`],
+    },
+    {
+        slug: `cli-pipeline`,
+        name: `CLI Pipeline`,
+        description: `CI/CD pipeline dashboard with staged build, test, deploy, and notify phases connected by status indicators.`,
+        colors: [`#0a0a0a`, `#22c55e`, `#f59e0b`],
+    },
+    {
+        slug: `github-readme`,
+        name: `GitHub README`,
+        description: `GitHub profile and README.md aesthetic with repo cards, shields.io badge pills, and a contribution activity graph.`,
+        colors: [`#0d1117`, `#238636`, `#58a6ff`],
+    },
+    {
+        slug: `blueprint`,
+        name: `Blueprint`,
+        description: `Technical drawing aesthetic with graph-paper grid, dashed outlines, measurement annotations, and architectural diagrams.`,
+        colors: [`#1a2744`, `#4a9eff`, `#ffffff`],
+    },
+    {
+        slug: `matrix-card`,
+        name: `Matrix Card`,
+        description: `Floating resume card over animated Matrix rain with mouse-reactive character distortion.`,
+        colors: [`#000000`, `#00ff41`, `#1a1a1a`],
+    },
+    {
+        slug: `matrix-panels`,
+        name: `Matrix Panels`,
+        description: `Stacked horizontal bands with Matrix rain peeking through the gaps, clean magazine-style readability.`,
+        colors: [`#000000`, `#00ff41`, `#0a0a0a`],
+    },
+    {
+        slug: `matrix-sidebar`,
+        name: `Matrix Sidebar`,
+        description: `Professional two-column sidebar layout with sticky profile card, floating over interactive Matrix rain.`,
+        colors: [`#000000`, `#00ff41`, `#111111`],
+    },
+    {
+        slug: `matrix-accordion`,
+        name: `Matrix Accordion`,
+        description: `Large hero with collapsible accordion sections, compact layout letting the Matrix rain fill the space.`,
+        colors: [`#000000`, `#00ff41`, `#050505`],
     },
 ]
 
