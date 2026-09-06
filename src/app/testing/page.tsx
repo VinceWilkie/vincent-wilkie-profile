@@ -1,6 +1,49 @@
 import Link from "next/link"
 
-const designs = [
+type Design = {
+    slug: string
+    name: string
+    description: string
+    colors: string[]
+    isNew?: boolean
+}
+
+const designs: Design[] = [
+    {
+        slug: `precision`,
+        name: `Precision`,
+        description: `Linear/Vercel-grade dark. Hairline borders, tight tracking, restrained indigo glow. Signals engineering excellence through craft and restraint rather than effects.`,
+        colors: [`#08090A`, `#818CF8`, `#EDEDEF`],
+        isNew: true,
+    },
+    {
+        slug: `console`,
+        name: `Console`,
+        description: `Your dark/dev DNA rebuilt as a real product UI — sidebar nav, metric cards, expandable service rows, uptime strip. Technical credibility without the gimmick.`,
+        colors: [`#0A0A0B`, `#34D399`, `#E4E4E7`],
+        isNew: true,
+    },
+    {
+        slug: `bento`,
+        name: `Bento`,
+        description: `Modular tile grid mixing identity, stats, skills, and projects at different densities. The current portfolio idiom — scannable, modern, easy to extend.`,
+        colors: [`#0B0B0D`, `#2DD4BF`, `#141417`],
+        isNew: true,
+    },
+    {
+        slug: `spec-sheet`,
+        name: `Spec Sheet`,
+        description: `Light Swiss/technical editorial. Numbered sections, hairline rules, monospace metadata, paper background. Reads like a beautifully typeset engineering document.`,
+        colors: [`#F7F6F3`, `#EA580C`, `#171717`],
+        isNew: true,
+    },
+    {
+        slug: `aurora`,
+        name: `Aurora`,
+        description: `Dark premium with drifting gradient mesh, glass panels, and gradient headlines. Product-launch polish — modern dark that isn't Matrix green.`,
+        colors: [`#050510`, `#A78BFA`, `#38BDF8`],
+        isNew: true,
+    },
     {
         slug: `scroll-reveal`,
         name: `Scroll Reveal`,
@@ -123,9 +166,15 @@ export default function TestingIndexPage() {
                                         <h2 className="text-2xl font-semibold group-hover:text-cyan-400 transition-colors">
                                             {design.name}
                                         </h2>
-                                        <span className="px-2 py-1 text-xs font-medium bg-slate-700 rounded-full text-slate-300">
-                                            Design #{idx + 1}
-                                        </span>
+                                        {design.isNew ? (
+                                            <span className="px-2 py-1 text-xs font-semibold bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-300">
+                                                NEW
+                                            </span>
+                                        ) : (
+                                            <span className="px-2 py-1 text-xs font-medium bg-slate-700 rounded-full text-slate-300">
+                                                Design #{idx + 1}
+                                            </span>
+                                        )}
                                     </div>
                                     <p className="text-slate-400 leading-relaxed">
                                         {design.description}
