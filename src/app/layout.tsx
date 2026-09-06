@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Roboto, Roboto_Mono } from "next/font/google"
 import "../styles/globals.css"
 
@@ -13,10 +13,34 @@ const robotoMono = Roboto_Mono({
     subsets: ["latin"],
 })
 
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#0A0A0B",
+}
+
 export const metadata: Metadata = {
-    title: "Vincent Wilkie",
-    description: "Created by Vincent Wilkie",
-    viewport: "width=device-width, initial-scale=1",
+    metadataBase: new URL("https://vincentwilkie.ca"),
+    title: "Vincent Wilkie — Full-stack engineer",
+    description:
+        "Full-stack engineer in Ontario, Canada. I design, build, and operate web systems end to end — interface through infrastructure.",
+    authors: [{ name: "Vincent Wilkie" }],
+    openGraph: {
+        type: "website",
+        locale: "en_CA",
+        url: "https://vincentwilkie.ca",
+        siteName: "Vincent Wilkie",
+        title: "Vincent Wilkie — Full-stack engineer",
+        description:
+            "Full-stack engineer in Ontario, Canada. I design, build, and operate web systems end to end — interface through infrastructure.",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Vincent Wilkie — Full-stack engineer",
+        description:
+            "Full-stack engineer in Ontario, Canada. I design, build, and operate web systems end to end — interface through infrastructure.",
+        creator: "@vincentwilkie",
+    },
 }
 
 export default function RootLayout({
