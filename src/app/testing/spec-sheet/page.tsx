@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { links, skills, projects } from "@/data/profile"
+import { experience, links, skills, projects } from "@/data/profile"
 
 const RULE = `border-t border-neutral-300`
 
@@ -24,13 +24,13 @@ export default function SpecSheetPage() {
 
                     <div className="mt-12 grid gap-8 sm:grid-cols-[1fr_320px]">
                         <p className="max-w-lg text-lg leading-relaxed text-neutral-700">
-                            Fourteen years of full-stack engineering — frontend interfaces people
+                            Over a decade of full-stack engineering — frontend interfaces people
                             enjoy, backends that hold up, and cloud infrastructure that stays quiet.
                             I take tangled legacy systems and make them boring again.
                         </p>
                         <dl className="space-y-2 font-mono text-[11px] uppercase tracking-wider">
                             <SpecRow label="Discipline" value="Full-stack" />
-                            <SpecRow label="Experience" value="14 years" />
+                            <SpecRow label="Experience" value={`${experience.years} years`} />
                             <SpecRow label="Focus" value="Web · Cloud" />
                             <SpecRow label="Status" value="Available" accent />
                         </dl>

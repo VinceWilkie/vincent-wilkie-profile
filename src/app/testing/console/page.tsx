@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { links, skills, projects } from "@/data/profile"
+import { experience, links, skills, projects } from "@/data/profile"
 
 const NAV = [
     { id: `overview`, label: `Overview`, icon: `▤` },
@@ -68,7 +68,7 @@ export default function ConsolePage() {
 
                     <div className="mt-6 rounded-lg border border-white/[0.07] bg-white/[0.02] p-3">
                         <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-600">Uptime</p>
-                        <p className="mt-1.5 font-mono text-lg text-white">14 yrs</p>
+                        <p className="mt-1.5 font-mono text-lg text-white">{experience.years} yrs</p>
                         <div className="mt-2 flex gap-0.5">
                             {Array.from({ length: 28 }).map((_, i) => (
                                 <div
@@ -91,15 +91,23 @@ export default function ConsolePage() {
                             Vincent Wilkie
                         </h1>
                         <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-zinc-400">
-                            Full-stack engineer, 14 years in production. I design, build, and operate
-                            web systems end to end — interface through infrastructure.
+                            Full-stack engineer. I design, build, and operate web systems end to
+                            end — interface through infrastructure.
                         </p>
 
                         <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-                            <Metric label="Experience" value="14y" trend="frontend · backend · cloud" />
+                            <Metric
+                                label="Experience"
+                                value={`${experience.years}y`}
+                                trend="frontend · backend · cloud"
+                            />
+                            <Metric
+                                label="Since"
+                                value={String(experience.startYear)}
+                                trend="first production ship"
+                            />
                             <Metric label="Domains" value="4" trend="full lifecycle" />
                             <Metric label="Region" value="ON, CA" trend="remote-friendly" />
-                            <Metric label="Response" value="< 24h" trend="typical reply time" />
                         </div>
                     </section>
 

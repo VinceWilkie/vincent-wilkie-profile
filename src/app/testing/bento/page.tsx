@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { links, skills, projects } from "@/data/profile"
+import { experience, links, skills, projects } from "@/data/profile"
 
 const tile = `rounded-2xl border border-white/[0.08] bg-[#141417] p-6 transition duration-300 hover:border-white/[0.16] hover:bg-[#18181c]`
 
@@ -31,8 +31,8 @@ export default function BentoPage() {
                                 Wilkie
                             </h1>
                             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-zinc-400">
-                                Full-stack engineer with 14 years of turning tangled systems into
-                                products that ship. Frontend craft, backend rigour, cloud that stays up.
+                                Full-stack engineer who turns tangled systems into products that
+                                ship. Frontend craft, backend rigour, cloud that stays up.
                             </p>
 
                             <div className="mt-auto flex flex-wrap gap-2 pt-8">
@@ -56,7 +56,9 @@ export default function BentoPage() {
                     <div className={`${tile} flex flex-col justify-between lg:row-span-1`}>
                         <span className="text-xs uppercase tracking-widest text-zinc-500">Experience</span>
                         <div>
-                            <div className="text-5xl font-semibold tracking-tight text-white">14</div>
+                            <div className="text-5xl font-semibold tracking-tight text-white">
+                                {experience.years}
+                            </div>
                             <div className="mt-1 text-sm text-zinc-400">years building for the web</div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { links, skills, projects } from "@/data/profile"
+import { experience, links, skills, projects } from "@/data/profile"
 
 const glass = `rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl`
 
@@ -55,7 +55,7 @@ export default function AuroraPage() {
 
                     <h1 className="mx-auto mt-8 max-w-3xl text-[clamp(2.75rem,8vw,5rem)] font-semibold leading-[1.03] tracking-[-0.04em]">
                         <span className="bg-gradient-to-br from-white via-white to-violet-300 bg-clip-text text-transparent">
-                            Fourteen years of
+                            {experience.years} years of
                         </span>
                         <br />
                         <span className="bg-gradient-to-br from-sky-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">

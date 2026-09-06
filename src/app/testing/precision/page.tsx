@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { links, skills, projects } from "@/data/profile"
+import { experience, links, skills, projects } from "@/data/profile"
 
 const stats = [
-    { value: `14+`, label: `Years shipping` },
+    { value: `${experience.years}+`, label: `Years shipping` },
     { value: `4`, label: `Core domains` },
     { value: `AWS`, label: `Cloud native` },
     { value: `2`, label: `Live side projects` },
@@ -53,7 +53,7 @@ export default function PrecisionPage() {
                         <span className="text-indigo-400">.</span>
                     </h1>
                     <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-white/50">
-                        Fourteen years across frontend, backend, and cloud infrastructure — turning
+                        Over a decade across frontend, backend, and cloud infrastructure — turning
                         legacy systems into things teams can actually move fast on.
                     </p>
 

@@ -1,3 +1,19 @@
+// Years of experience are derived from these start years rather than hardcoded,
+// so nothing goes stale as the calendar rolls over.
+export const CAREER_START_YEAR = 2012
+export const CLOUD_START_YEAR = 2021
+
+export const yearsSince = (startYear: number) => new Date().getFullYear() - startYear
+
+const careerYears = yearsSince(CAREER_START_YEAR)
+const cloudYears = yearsSince(CLOUD_START_YEAR)
+
+export const experience = {
+    startYear: CAREER_START_YEAR,
+    years: careerYears,
+    cloudYears,
+}
+
 export const links = [
     { label: `phone`, value: `+1-289-698-4004`, href: `tel:+2896984004`, color: `text-green-400` },
     { label: `email`, value: `vincentwilkie@hotmail.com`, href: `mailto:vincentwilkie@hotmail.com`, color: `text-cyan-400` },
@@ -11,15 +27,15 @@ export const skills = [
     {
         name: `Frontend`,
         icon: `monitor`,
-        years: `14y+`,
+        years: `${careerYears}y+`,
         tagline: `Interfaces people actually enjoy using`,
-        narrative: `From hand-coded HTML/CSS sites to complex single-page apps, I've spent 14 years obsessing over how things feel in the browser. I build responsive, accessible interfaces that work across every screen — including hybrid mobile apps with Ionic.`,
+        narrative: `From hand-coded HTML/CSS sites to complex single-page apps, I've spent my career obsessing over how things feel in the browser. I build responsive, accessible interfaces that work across every screen — including hybrid mobile apps with Ionic.`,
         tools: [`React`, `Vue`, `Angular`, `TypeScript`, `SCSS`, `Tailwind CSS`, `Ionic`, `HTML/CSS/JS`],
     },
     {
         name: `Backend & Data`,
         icon: `server`,
-        years: `14y+`,
+        years: `${careerYears}y+`,
         tagline: `The engine behind the curtain`,
         narrative: `I've built APIs, refactored legacy PHP codebases into structured frameworks, and designed database schemas that scale. Whether it's a REST endpoint or a complex query optimization, I focus on reliability and clarity.`,
         tools: [`Node.js`, `Express`, `PHP`, `CodeIgniter`, `Python`, `MySQL`, `NoSQL`, `REST APIs`],
@@ -27,7 +43,7 @@ export const skills = [
     {
         name: `Cloud & Infrastructure`,
         icon: `cloud`,
-        years: `5y+`,
+        years: `${cloudYears}y+`,
         tagline: `Ship it and keep it running`,
         narrative: `From spinning up EC2 instances to orchestrating serverless workflows with Lambda and SQS, I handle the infrastructure that keeps production humming. I've also managed on-site servers and hardware systems.`,
         tools: [`AWS (EC2, Lambda, S3, RDS)`, `CloudFormation`, `SQS/SNS`, `CI/CD`, `Server Management`],
@@ -35,8 +51,8 @@ export const skills = [
     {
         name: `Full Stack Leadership`,
         icon: `compass`,
-        years: `14y+`,
-        tagline: `14 years of connecting the dots`,
+        years: `${careerYears}y+`,
+        tagline: `Connecting the dots across the whole stack`,
         narrative: `Beyond writing code, I make architectural decisions that shape entire products. I've modernized legacy systems, bridged web and mobile platforms, and helped teams move faster by simplifying complexity.`,
         tools: [`Architecture`, `Legacy Modernization`, `Cross-Platform`, `Mentoring`, `Technical Strategy`],
     },
